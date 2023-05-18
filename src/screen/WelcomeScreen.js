@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 import { hr80,colors} from '../global/style'
 
 
-function WeelcomeScreen() {
+function WeelcomeScreen({navigation}) {
     console.log 
   return (
     <View style={styles.container}> 
@@ -18,10 +18,10 @@ function WeelcomeScreen() {
    <Text style={styles.text}> Find the best Food aroud you at lowest price</Text>
    <View style={hr80}/>
    <View style={styles.btnOut}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.navigate("SignUp")}>
         <Text style={styles.btn}>Sing Up </Text>
     </TouchableOpacity>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.navigate("Login")}>
         <Text style={styles.btn}>Log in</Text>
     </TouchableOpacity>
    </View>
@@ -54,10 +54,9 @@ const styles=StyleSheet.create({
         height:'100%'
     },
     text:{
-        FontSize:18,
+        fontSize:18,
         width:'80%',
         color:colors.col1,
-        textAlign:'center',
     },
     btnOut:{
         flexDirection:'row'
