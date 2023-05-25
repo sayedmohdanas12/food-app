@@ -1,6 +1,6 @@
 import React from 'react'
 import {View,Text,StyleSheet,Image, TouchableOpacity} from 'react-native'
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo.png'
 import { hr80,colors} from '../global/style'
 
 

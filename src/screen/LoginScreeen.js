@@ -47,7 +47,7 @@ function LoginScreeen({navigation}) {
 
       </View>
       <TouchableOpacity style={btn1}>
-        <Text style={{ color: colors.col1, fontSize: titles.btntxt, fontWeight: 'bold', textAlign: 'center' }}>Sing in</Text>
+        <Text style={{ color: colors.col1, fontSize: titles.btntxt, fontWeight: 'bold', textAlign: 'center' }} onPress={()=>navigation.navigate('Home')} >Sing in</Text>
       </TouchableOpacity>
 
 
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   forgt: {
     color: colors.text2,
     margin: 20,
-    marginbottom: 10,
+    // marginbottom: 10,
   },
   or: {
     marginVertical: 10,

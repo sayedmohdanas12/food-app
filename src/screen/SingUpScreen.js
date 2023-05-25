@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { colors, titles, btn1, hr80 } from '../global/style'
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 
 
 
-function LoginScreeen() {
+
+<Feather name="smartphone" size={24} color="black" />
+function SingUpScreen({navigation}) {
   const [emailFocus, setEmailFocus] = useState(false)
+  const [phoneFocus, setPhoneFocus] = useState(false)
+
   const [nameFocus, setNameFocus] = useState(false)
 
   const [passwordFocus, setPasswordFocus] = useState(false)
@@ -19,6 +25,7 @@ function LoginScreeen() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
+    <ScrollView style={{flex:1}}>
     <View style={styles.container}>
       <Text style={styles.head1}>
         Sign Up
@@ -27,24 +34,51 @@ function LoginScreeen() {
         <AntDesign name="user" size={24} color={nameFocus ? colors.text1 : colors.text2} />
 
 
-        <TextInput style={styles.input} placeholder='Name ' onFocus={
+        <TextInput style={styles.input} placeholder=' Full Name' onFocus={
           () => {
             setNameFocus(true)
             setEmailFocus(false)
+            setPhoneFocus(false)
             setPasswordFocus(false)
             setShowPassword(false)
             setConfirmPasswordFocus(false)
 
           }
         } />
+
+
       </View >
+
+
       <View style={styles.inputContainer}>
-        <AntDesign name="user" size={24} color={emailFocus ? colors.text1 : colors.text2} />
+        <MaterialCommunityIcons name="email" size={24} color={emailFocus ? colors.text1 : colors.text2} />
+  
+  
+          <TextInput style={styles.input} placeholder='Email ' onFocus={
+            () => {
+              setEmailFocus(true)
+              setPhoneFocus(false)
+              setPasswordFocus(false)
+              setShowPassword(false)
+              setNameFocus(false)
+              setConfirmPasswordFocus(false)
+  
+  
+            }
+          } />
+        </View >
 
 
-        <TextInput style={styles.input} placeholder='Email ' onFocus={
+
+      <View style={styles.inputContainer}>
+      <Feather name="smartphone" size={24}  color={phoneFocus ? colors.text1 : colors.text2} />
+        
+
+
+        <TextInput style={styles.input} placeholder='Phone' onFocus={
           () => {
-            setEmailFocus(true)
+            setPhoneFocus(true)
+            setEmailFocus(false)
             setPasswordFocus(false)
             setShowPassword(false)
             setNameFocus(false)
@@ -54,11 +88,13 @@ function LoginScreeen() {
           }
         } />
       </View >
+     
       <View style={styles.inputContainer} >
         <AntDesign name="lock1" size={24} color={passwordFocus ? colors.text1 : colors.text2} />
         <TextInput style={styles.input} placeholder='Password' onFocus={
           () => {
             setPasswordFocus(true)
+            setPhoneFocus(false)
             setEmailFocus(false)
             setNameFocus(false)
             setConfirmPasswordFocus(false)
@@ -82,6 +118,7 @@ function LoginScreeen() {
             setPasswordFocus(false)
             setEmailFocus(false)
             setNameFocus(false)
+            setPhoneFocus(false)
             
 
           }
@@ -93,6 +130,15 @@ function LoginScreeen() {
 
 
       </View>
+      <Text  style={{color:colors.text2}}>Please Enter your Address</Text>
+      <View style={styles.inputContainer} >
+        <TextInput style={styles.input} placeholder='Enter your Address'
+         
+      />
+
+
+      </View>
+
       <TouchableOpacity style={btn1}>
         <Text style={{ color: colors.col1, fontSize: titles.btntxt, fontWeight: 'bold', textAlign: 'center' }}>Sing in</Text>
       </TouchableOpacity>
@@ -116,13 +162,14 @@ function LoginScreeen() {
 
       <View style={hr80} />
       <View style={{flexDirection:'row'}}>
-      <Text>Don't have any Account?</Text>
-   <Text  style={{color:colors.text1,fontWeight:'bold',marginBottom:10}}> Sign Up</Text>
+      <Text>Already  have  Account</Text>
+   <Text  style={{color:colors.text1,fontWeight:'bold',marginBottom:10}} onPress={()=>navigation.navigate('Login')}> Sign In</Text>
       </View>
    
 
 
     </View>
+    </ScrollView>
   )
 }
 const styles = StyleSheet.create({
@@ -162,7 +209,7 @@ const styles = StyleSheet.create({
   forgt: {
     color: colors.text2,
     margin: 20,
-    marginbottom: 10,
+  marginBottom: 5,
   },
   or: {
     marginVertical: 10,
@@ -171,7 +218,7 @@ const styles = StyleSheet.create({
   },
   gftx: {
     color: colors.text2,
-    marginVertical: 10,
+    marginVertical: 0,
     fontSize: 25,
   },
   icon: {
@@ -192,4 +239,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default LoginScreeen
+export default SingUpScreen
